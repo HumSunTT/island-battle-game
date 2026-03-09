@@ -143,7 +143,12 @@ export function attackIsland(
   }
 
   if (reflectDamage > 0) {
-    attacker.gold = Math.max(0, attacker.gold - reflectDamage);
+    attacker.hp = Math.max(0, attacker.hp - reflectDamage);
+  }
+
+  if (counterDamage > 0) {
+    attacker.hp = Math.max(0, attacker.hp - counterDamage);
+    attacker.stats.totalDamageTaken += counterDamage;
   }
 
   if (attacker.equipment.weapon?.id === weapon.id) {

@@ -209,10 +209,10 @@ export function IslandMap({
                 y={screenPos.y - 8}
                 textAnchor="start"
                 dominantBaseline="middle"
-                fill="#FFFFFF"
-                fontSize="14"
+                fill="#DDA0DD"
+                fontSize="16"
                 fontWeight="bold"
-                style={{ pointerEvents: 'none', textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}
+                style={{ pointerEvents: 'none', textShadow: '2px 2px 4px rgba(0,0,0,1)' }}
               >
                 {island.name.length > 5 ? island.name.slice(0, 5) + '..' : island.name}
               </text>
@@ -223,6 +223,7 @@ export function IslandMap({
                 textAnchor="start"
                 fill="#FFFFFF"
                 fontSize="12"
+                fontWeight="bold"
                 style={{ pointerEvents: 'none', textShadow: '1px 1px 1px rgba(0,0,0,0.8)' }}
               >
                 {island.shield.currentHp}/{island.shield.maxHp}
@@ -233,8 +234,9 @@ export function IslandMap({
                 y={screenPos.y + 28}
                 textAnchor="start"
                 fill="#FFD700"
-                fontSize="11"
-                style={{ pointerEvents: 'none' }}
+                fontSize="13"
+                fontWeight="bold"
+                style={{ pointerEvents: 'none', textShadow: '1px 1px 1px rgba(0,0,0,0.8)' }}
               >
                 💰{island.goldPerTurn}
               </text>

@@ -73,6 +73,8 @@ export function createPlayer(
     color,
     avatar: `👤`,
     gold: DEFAULT_CONFIG.initialGold,
+    hp: 100,
+    maxHp: 100,
     islandIds,
     equipment: {
       weapon: initialWeapon,
@@ -211,6 +213,7 @@ export function initializeGame(
       selfRepairPerTurn: 5,
     };
     playerIsland.goldPerTurn = 500;
+    playerIsland.attack = 50;
     playerIslandIds.push(playerIsland.id);
 
     players.push(
@@ -353,6 +356,9 @@ export function checkVictory(state: GameState): string | null {
   }
   
   for (const player of players) {
+    if (player.hp <= 0) {
+      continue;
+    }
     const ownedIslands = islands.filter(island => island.ownerId === player.id);
     if (ownedIslands.length === islands.length) {
       return player.id;
@@ -360,12 +366,18 @@ export function checkVictory(state: GameState): string | null {
   }
   
   const playersWithIslands = players.filter(player => {
+    if (player.hp <= 0) return false;
     const ownedIslands = islands.filter(island => island.ownerId === player.id);
     return ownedIslands.length > 0;
   });
   
   if (playersWithIslands.length === 1) {
     return playersWithIslands[0].id;
+  }
+  
+  const alivePlayers = players.filter(p => p.hp > 0);
+  if (alivePlayers.length === 1) {
+    return alivePlayers[0].id;
   }
   
   return null;

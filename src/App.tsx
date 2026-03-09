@@ -138,7 +138,7 @@ function App() {
             </div>
             <div className="player-info">
               <div className="player-name">{currentPlayer.name}</div>
-              <div className="player-gold">💰 {currentPlayer.gold}</div>
+              <div className="player-gold">❤️ {currentPlayer.hp}/{currentPlayer.maxHp} | 💰 {currentPlayer.gold}</div>
             </div>
           </div>
         </div>
@@ -187,7 +187,7 @@ function App() {
               showNotificationMsg(`造成 ${result.damage} 点伤害!`);
               if (result.isCritical) showNotificationMsg('暴击!');
               if (result.counterDamage) {
-                showNotificationMsg(`岛屿反击，武器耐久度-${Math.floor(result.counterDamage / 10)}!`);
+                showNotificationMsg(`岛屿反击，你受到 ${result.counterDamage} 点伤害!`);
               }
             }
           }}
