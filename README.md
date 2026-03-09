@@ -5,6 +5,8 @@
 ## 游戏简介
 
 在这片神秘的群岛中，玩家们争夺岛屿的控制权。通过购买装备、攻击敌方岛屿、占领领土，最终成为群岛的霸主！
+![Uploading 岛屿争夺战.png…]()
+
 
 ## 核心玩法
 
@@ -69,7 +71,7 @@ npm run build
 
 ## 项目结构
 
-\`\`\`
+```
 island-battle-game/
 ├── src/
 │   ├── game/          # 游戏逻辑
@@ -81,7 +83,7 @@ island-battle-game/
 ├── index.html
 ├── package.json
 └── vite.config.ts
-\`\`\`
+```
 
 ## 开发计划
 
