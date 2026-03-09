@@ -138,7 +138,12 @@ function App() {
             </div>
             <div className="player-info">
               <div className="player-name">{currentPlayer.name}</div>
-              <div className="player-gold">❤️ {currentPlayer.hp}/{currentPlayer.maxHp} | 💰 {currentPlayer.gold}</div>
+              <div className="player-gold">
+                {(() => {
+                  const baseIsland = gameState.islands.find(i => i.id === currentPlayer.islandIds[0]);
+                  return baseIsland ? `❤️ ${baseIsland.shield.currentHp}/${baseIsland.shield.maxHp}` : '';
+                })()} | 💰 {currentPlayer.gold}
+              </div>
             </div>
           </div>
         </div>

@@ -140,8 +140,6 @@ export interface Player {
   color: string;
   avatar: string;
   gold: number;
-  hp: number;
-  maxHp: number;
   islandIds: string[];
   equipment: EquipmentSlots;
   backpack: Equipment[];

@@ -142,13 +142,17 @@ export function attackIsland(
     });
   }
 
-  if (reflectDamage > 0) {
-    attacker.hp = Math.max(0, attacker.hp - reflectDamage);
-  }
-
-  if (counterDamage > 0) {
-    attacker.hp = Math.max(0, attacker.hp - counterDamage);
-    attacker.stats.totalDamageTaken += counterDamage;
+  if (reflectDamage > 0 || counterDamage > 0) {
+    const attackerBaseIsland = newState.islands.find(i => i.id === attacker.islandIds[0]);
+    if (attackerBaseIsland) {
+      if (reflectDamage > 0) {
+        attackerBaseIsland.shield.currentHp = Math.max(0, attackerBaseIsland.shield.currentHp - reflectDamage);
+      }
+      if (counterDamage > 0) {
+        attackerBaseIsland.shield.currentHp = Math.max(0, attackerBaseIsland.shield.currentHp - counterDamage);
+        attacker.stats.totalDamageTaken += counterDamage;
+      }
+    }
   }
 
   if (attacker.equipment.weapon?.id === weapon.id) {
