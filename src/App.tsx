@@ -252,6 +252,7 @@ function App() {
             </div>
             <ItemGrid
               items={currentPlayer.backpack}
+              maxItems={20}
               onItemClick={(item, index) => {
                 if (item.type === 'consumable') {
                   setSelectedItemForUse({ item, index });

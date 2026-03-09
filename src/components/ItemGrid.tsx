@@ -9,6 +9,7 @@ interface ItemGridProps {
   emptyMessage?: string;
   showPrice?: boolean;
   disabled?: boolean;
+  maxItems?: number;
 }
 
 const RARITY_COLORS: Record<Rarity, string> = {
@@ -40,16 +41,17 @@ export function ItemGrid({
   emptyMessage = '暂无道具',
   showPrice,
   disabled,
+  maxItems = 10,
 }: ItemGridProps) {
-  const slots = Array(12).fill(null);
+  const slots = Array(maxItems).fill(null);
   items.forEach((item, index) => {
-    if (index < 12) slots[index] = item;
+    if (index < maxItems) slots[index] = item;
   });
 
   return (
     <div style={{
       display: 'grid',
-      gridTemplateColumns: 'repeat(3, 1fr)',
+      gridTemplateColumns: 'repeat(5, 1fr)',
       gap: '12px',
       padding: '16px',
       maxHeight: '600px',
